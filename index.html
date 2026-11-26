@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>azeeza media | Elif</title>
+<meta name="description" content="Hallo, ich bin Elif. Unter azeeza media findest du meinen Mini-Kurs Mobile Avatar Atelier und mein Buch Wundervoll erschaffen.">
+<meta property="og:title" content="azeeza media | Elif">
+<meta property="og:description" content="Mein Mini-Kurs Mobile Avatar Atelier und mein Buch Wundervoll erschaffen.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FBF6F1;
+    --cream-2:#F5ECE4;
+    --blush:#F4E1DD;
+    --rose:#E9C6C1;
+    --rose-mid:#D9A7A2;
+    --rose-deep:#B97C78;
+    --text:#4A3328;
+    --text-soft:#7D6656;
+    --white:#FFFDFB;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Poppins',sans-serif;font-weight:300;color:var(--text);background:var(--cream);line-height:1.7;font-size:16px}
+  img{max-width:100%;display:block}
+  a{color:inherit}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+  .narrow{max-width:680px;margin:0 auto}
+  h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:600;line-height:1.15;color:var(--text)}
+  h1{font-size:clamp(2.4rem,7.5vw,4rem)}
+  h2{font-size:clamp(1.9rem,5.5vw,2.7rem);margin-bottom:18px}
+  h3{font-size:1.5rem;margin-bottom:6px}
+  em.script{font-style:italic;color:var(--rose-deep);font-weight:500}
+  strong{font-weight:500}
+  section{padding:72px 0}
+  .eyebrow{display:inline-block;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;font-weight:500;color:var(--rose-deep);margin-bottom:14px}
+  .center{text-align:center}
+
+  /* Kopfzeile */
+  .topbar{padding:18px 0;position:sticky;top:0;z-index:10;background:rgba(251,246,241,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--blush)}
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .logo{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;text-decoration:none;letter-spacing:.02em}
+  .logo span{color:var(--rose-deep);font-style:italic;font-weight:500}
+  .nav{display:flex;gap:18px;font-size:.82rem}
+  .nav a{text-decoration:none;color:var(--text-soft)}
+  .nav a:hover{color:var(--rose-deep)}
+
+  /* Buttons */
+  .btn{display:inline-block;background:var(--text);color:var(--white);text-decoration:none;padding:15px 30px;border-radius:999px;font-weight:500;font-size:.95rem;box-shadow:0 10px 24px rgba(74,51,40,.18);transition:transform .2s,background .2s}
+  .btn:hover{transform:translateY(-2px);background:#3a271e}
+  .btn-light{background:var(--white);color:var(--text);border:1.5px solid var(--text);box-shadow:none}
+  .btn-light:hover{background:var(--blush)}
+
+  /* Hero */
+  .hero{padding:56px 0 76px;background:radial-gradient(circle at 85% 10%,var(--rose) 0,transparent 38%),radial-gradient(circle at 5% 90%,var(--blush) 0,transparent 40%),var(--cream)}
+  .hero-grid{display:grid;gap:40px;align-items:center}
+  .hero p.lead{font-size:1.08rem;margin:20px 0 30px;color:var(--text-soft);max-width:540px}
+  .hero-btns{display:flex;flex-wrap:wrap;gap:12px}
+  .portrait{width:240px;height:300px;margin:0 auto;border-radius:140px 140px 24px 24px;background:linear-gradient(160deg,var(--blush),var(--rose-mid));border:8px solid var(--white);box-shadow:0 26px 50px rgba(185,124,120,.3);display:flex;align-items:center;justify-content:center;text-align:center;font-size:.85rem;overflow:hidden}
+  .portrait img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
+
+  /* Angebote */
+  .soft{background:var(--white)}
+  .offers{display:grid;gap:22px;margin-top:34px}
+  .offer{background:var(--cream);border:1px solid var(--rose);border-radius:28px;overflow:hidden;display:flex;flex-direction:column}
+  .offer-visual{aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;text-align:center;font-size:.85rem;color:var(--text);background:linear-gradient(150deg,var(--blush),var(--rose) 70%,var(--rose-mid))}
+  .offer-visual img,.offer-visual video{width:100%;height:100%;object-fit:cover}
+  .offer-body{padding:26px 24px 30px;display:flex;flex-direction:column;flex:1}
+  .tag{display:inline-block;align-self:flex-start;font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;background:var(--rose-deep);color:var(--white);padding:4px 11px;border-radius:999px;margin-bottom:14px}
+  .offer p{color:var(--text-soft);font-size:.95rem;margin-bottom:22px;flex:1}
+  .offer .btn{align-self:flex-start}
+
+  /* Über mich */
+  .placeholder{border:2px dashed var(--rose-mid);border-radius:18px;padding:22px;background:var(--white);color:var(--text-soft);font-size:.92rem}
+  .placeholder strong{color:var(--rose-deep)}
+
+  /* Instagram */
+  .insta{display:grid;gap:18px;margin-top:30px}
+  .insta a{display:flex;align-items:center;gap:16px;text-decoration:none;background:var(--white);border:1px solid var(--rose);border-radius:22px;padding:20px 22px;transition:transform .2s}
+  .insta a:hover{transform:translateY(-2px)}
+  .ig-icon{flex:0 0 52px;height:52px;border-radius:16px;background:var(--blush);display:flex;align-items:center;justify-content:center}
+  .ig-icon svg{width:26px;height:26px;stroke:var(--rose-deep)}
+  .insta .handle{font-weight:500;display:block}
+  .insta .desc{font-size:.85rem;color:var(--text-soft)}
+  .insta .arrow{margin-left:auto;color:var(--rose-deep);font-size:1.2rem}
+
+  footer{background:var(--text);color:var(--cream-2);text-align:center;padding:34px 20px;font-size:.8rem}
+  footer a{color:var(--cream-2);margin:0 10px}
+  footer p{margin-top:12px;opacity:.75}
+
+  @media (max-width:520px){.nav a.hide-sm{display:none}}
+  @media (min-width:820px){
+    .hero-grid{grid-template-columns:1.3fr 1fr}
+    .offers,.insta{grid-template-columns:1fr 1fr}
+    .portrait{width:300px;height:380px;border-radius:170px 170px 28px 28px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ EINSTELLUNGEN ============
+     Links stehen ganz unten im <script>:
+     BUCH_URL = Link zum Buch (Verkaufsseite oder Digistore24)
+     ======================================= -->
+
+<div class="topbar">
+  <div class="wrap">
+    <a class="logo" href="#">azeeza <span>media</span></a>
+    <nav class="nav">
+      <a href="#angebote">Angebote</a>
+      <a href="#ueber-mich">Über mich</a>
+      <a href="#instagram" class="hide-sm">Instagram</a>
+    </nav>
+  </div>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">azeeza media</span>
+      <h1>Hallo, ich bin Elif.<br><em class="script">Schön, dass du hier bist.</em></h1>
+      <p class="lead">Hier findest du alles, was ich für Frauen erstelle: einen kleinen Kurs, mit dem du am Handy deinen eigenen KI-Avatar erschaffst, und mein Buch über deinen Zyklus. Klar erklärt und so gemacht, dass es in einen vollen Alltag passt.</p>
+      <div class="hero-btns">
+        <a class="btn" href="#angebote">Zu meinen Angeboten</a>
+        <a class="btn btn-light" href="#ueber-mich">Mehr über mich</a>
+      </div>
+    </div>
+    <div>
+      <div class="portrait">
+        <img src="elif.jpg" alt="Elif">
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ANGEBOTE -->
+<section class="soft" id="angebote">
+  <div class="wrap">
+    <div class="center narrow">
+      <span class="eyebrow">Meine Angebote</span>
+      <h2>Was du bei mir findest</h2>
+    </div>
+    <div class="offers">
+
+      <article class="offer">
+        <div class="offer-visual">
+          <img src="atelier-logo.jpg" alt="Mobile Avatar Atelier">
+        </div>
+        <div class="offer-body">
+          <span class="tag">Mini-Kurs</span>
+          <h3>Mobile Avatar Atelier</h3>
+          <p>Erstelle deinen eigenen KI-Avatar und kurze B-Roll-Clips für deine Reels, komplett am Handy. Ohne Laptop, ohne Technikstress und ohne dein Gesicht zu zeigen. Dazu gibt es den Avatar-Fahrplan als PDF.</p>
+          <a class="btn" href="mobile-avatar-atelier.html">Zum Kurs</a>
+        </div>
+      </article>
+
+      <article class="offer">
+        <div class="offer-visual">
+          <img src="buecher.jpg" alt="Buch Wundervoll erschaffen">
+        </div>
+        <div class="offer-body">
+          <span class="tag">Buch</span>
+          <h3>Wundervoll erschaffen</h3>
+          <p>Eine Einführung in die natürliche Familienplanung für muslimische Frauen. Das Buch stellt dir die Methode vor und zeigt dir, wie du die Zeichen deines Körpers besser verstehst.</p>
+          <a class="btn buch-link" href="#">Zum Buch</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ÜBER MICH -->
+<section id="ueber-mich">
+  <div class="wrap narrow">
+    <div>
+      <span class="eyebrow">Über mich</span>
+      <h2>Wie ich hierher gekommen bin</h2>
+      <div class="placeholder">
+        <strong>Platzhalter:</strong> Hier kommt deine Vorstellung hin. Wer du bist, was du hier machst und wie du dahin gekommen bist.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTAGRAM -->
+<section class="soft" id="instagram">
+  <div class="wrap">
+    <div class="center narrow">
+      <span class="eyebrow">Instagram</span>
+      <h2>Folge mir auf Instagram</h2>
+    </div>
+    <div class="insta">
+      <a href="https://www.instagram.com/fitrah.frauen/" target="_blank" rel="noopener">
+        <span class="ig-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6"/></svg></span>
+        <span><span class="handle">@fitrah.frauen</span><span class="desc">Frausein, Zyklus und Körperwissen</span></span>
+        <span class="arrow">›</span>
+      </a>
+      <a href="https://www.instagram.com/succeeding.halal/" target="_blank" rel="noopener">
+        <span class="ig-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6"/></svg></span>
+        <span><span class="handle">@succeeding.halal</span><span class="desc">Halal Business und Content mit KI</span></span>
+        <span class="arrow">›</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <a href="https://azeeza.de/impressum.html">Impressum</a>
+  <a href="https://azeeza.de/datenschutz.html">Datenschutz</a>
+  <p>© 2026 azeeza media</p>
+</footer>
+
+<script>
+  // ===== HIER ANPASSEN =====
+  const BUCH_URL = "https://www.digistore24.com/product/BUCH-PRODUKT-ID"; // Link zum Buch
+  // =========================
+  document.querySelectorAll('.buch-link').forEach(a => a.href = BUCH_URL);
+</script>
+</body>
+</html>

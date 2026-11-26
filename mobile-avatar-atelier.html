@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mobile Avatar Atelier | Dein KI-Avatar nur mit dem Handy</title>
+<meta name="description" content="Erstelle deinen eigenen KI-Avatar und kurze Videos für deine Reels komplett mit dem Handy. Ohne Laptop, ohne Technikstress, ohne dein Gesicht zu zeigen.">
+<meta property="og:title" content="Mobile Avatar Atelier | Dein KI-Avatar nur mit dem Handy">
+<meta property="og:description" content="Dein eigener KI-Avatar und kurze Videos für deine Reels, komplett am Handy. Ohne Laptop, ohne dein Gesicht zu zeigen.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FBF6F1;
+    --cream-2:#F5ECE4;
+    --blush:#F4E1DD;
+    --rose:#E9C6C1;
+    --rose-mid:#D9A7A2;
+    --rose-deep:#B97C78;
+    --text:#4A3328;
+    --text-soft:#7D6656;
+    --white:#FFFDFB;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Poppins',sans-serif;
+    font-weight:300;
+    color:var(--text);
+    background:var(--cream);
+    line-height:1.7;
+    font-size:16px;
+  }
+  img{max-width:100%;display:block}
+  a{color:inherit}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+  .narrow{max-width:680px;margin:0 auto}
+  h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:600;line-height:1.15;color:var(--text)}
+  h1{font-size:clamp(2.3rem,7vw,3.8rem)}
+  h2{font-size:clamp(1.9rem,5.5vw,2.7rem);margin-bottom:18px}
+  h3{font-size:1.45rem;margin-bottom:6px}
+  em.script{font-style:italic;color:var(--rose-deep);font-weight:500}
+  strong{font-weight:500}
+  section{padding:72px 0}
+  .eyebrow{
+    display:inline-block;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;
+    font-weight:500;color:var(--rose-deep);margin-bottom:14px
+  }
+  .center{text-align:center}
+
+  /* Launch-Leiste */
+  .launchbar{
+    background:var(--rose-deep);color:var(--white);text-align:center;
+    font-size:.85rem;padding:10px 16px;font-weight:400
+  }
+  .launchbar strong{font-weight:600}
+
+  /* Buttons */
+  .btn{
+    display:inline-block;background:var(--text);color:var(--white);text-decoration:none;
+    padding:16px 34px;border-radius:999px;font-weight:500;font-size:1rem;
+    box-shadow:0 10px 24px rgba(74,51,40,.18);transition:transform .2s, background .2s
+  }
+  .btn:hover{transform:translateY(-2px);background:#3a271e}
+  .btn-note{display:block;font-size:.78rem;color:var(--text-soft);margin-top:12px}
+
+  /* Hero */
+  .hero{
+    padding:56px 0 70px;
+    background:
+      radial-gradient(circle at 85% 10%, var(--rose) 0, transparent 38%),
+      radial-gradient(circle at 5% 90%, var(--blush) 0, transparent 40%),
+      var(--cream);
+  }
+  .hero-grid{display:grid;gap:44px;align-items:center}
+  .hero p.lead{font-size:1.08rem;margin:20px 0 28px;color:var(--text-soft);max-width:520px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+  .chip{
+    background:var(--white);border:1px solid var(--rose);border-radius:999px;
+    padding:6px 14px;font-size:.8rem;color:var(--text-soft)
+  }
+
+  /* Handy-Mockup */
+  .phone{
+    width:250px;height:510px;margin:0 auto;border-radius:38px;background:var(--text);
+    padding:12px;box-shadow:0 30px 60px rgba(185,124,120,.35);position:relative
+  }
+  .phone::before{
+    content:"";position:absolute;top:20px;left:50%;transform:translateX(-50%);
+    width:80px;height:20px;border-radius:20px;background:var(--text);z-index:2
+  }
+  .screen{
+    width:100%;height:100%;border-radius:28px;overflow:hidden;
+    background:linear-gradient(160deg,var(--blush),var(--rose) 60%,var(--rose-mid));
+    display:flex;align-items:center;justify-content:center;text-align:center;
+    color:var(--text);font-size:.85rem;padding:24px
+  }
+  .screen{position:relative}
+  .screen video.reel{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s ease}
+  .screen video.reel.show{opacity:1}
+  .screen.has-videos .screen-placeholder{display:none}
+
+  /* Kennst du das */
+  .soft{background:var(--white)}
+  .pain-list{list-style:none;display:grid;gap:14px;margin-top:26px}
+  .pain-list li{
+    background:var(--cream);border-left:3px solid var(--rose-mid);
+    padding:16px 18px;border-radius:0 14px 14px 0
+  }
+
+  /* Zitat */
+  .quote{
+    background:var(--blush);border-radius:26px;padding:42px 28px;text-align:center;margin-top:8px
+  }
+  .quote p.big{
+    font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.6rem,5vw,2.2rem);
+    line-height:1.3;margin-bottom:18px;color:var(--text)
+  }
+
+  /* Module */
+  .modules{display:grid;gap:16px;margin-top:34px}
+  .module{
+    background:var(--white);border:1px solid var(--rose);border-radius:20px;padding:24px 22px;
+    display:grid;grid-template-columns:54px 1fr;gap:16px;align-items:start
+  }
+  .num{
+    width:54px;height:54px;border-radius:50%;background:var(--rose);color:var(--text);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600
+  }
+  .module.small .num{background:var(--cream-2);font-size:1.1rem}
+  .module p{color:var(--text-soft);font-size:.95rem}
+
+  /* Für wen */
+  .two{display:grid;gap:18px;margin-top:30px}
+  .card{background:var(--white);border-radius:22px;padding:28px 24px}
+  .card.yes{border-top:4px solid var(--rose-mid)}
+  .card.no{border-top:4px solid var(--cream-2)}
+  .card ul{list-style:none;margin-top:12px;display:grid;gap:10px}
+  .card li{padding-left:26px;position:relative;font-size:.95rem}
+  .card.yes li::before{content:"♡";position:absolute;left:0;color:var(--rose-deep)}
+  .card.no li::before{content:"×";position:absolute;left:4px;color:var(--text-soft)}
+
+  /* Extras */
+  .extras{display:grid;gap:18px;margin-top:30px}
+  .extra{
+    background:linear-gradient(150deg,var(--white),var(--blush));
+    border-radius:22px;padding:28px 24px;border:1px solid var(--rose)
+  }
+  .tag{
+    display:inline-block;font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;
+    background:var(--rose-deep);color:var(--white);padding:4px 10px;border-radius:999px;margin-bottom:12px
+  }
+
+  .extra.gift{grid-column:1/-1;background:linear-gradient(150deg,var(--blush),var(--rose));border:1px dashed var(--rose-deep)}
+  .extra.gift .tag{background:var(--text)}
+  .value{font-weight:500;color:var(--rose-deep)}
+
+  /* Affiliate */
+  .aff{display:grid;gap:18px;margin-top:30px}
+  .aff-card{background:var(--white);border-radius:22px;padding:30px 24px;text-align:center;border:1px solid var(--rose)}
+  .aff-pct{font-family:'Cormorant Garamond',serif;font-size:3.4rem;font-weight:600;line-height:1;color:var(--rose-deep);margin-bottom:8px}
+  .aff-card p{color:var(--text-soft);font-size:.95rem}
+  .small-note{font-size:.78rem;color:var(--text-soft);margin-top:22px;text-align:center}
+  @media (min-width:820px){.aff{grid-template-columns:1fr 1fr}}
+
+  /* Über mich */
+  .about{display:grid;gap:30px;align-items:center}
+  .about-img{
+    width:220px;height:220px;border-radius:50%;margin:0 auto;
+    background:linear-gradient(160deg,var(--blush),var(--rose-mid));
+    display:flex;align-items:center;justify-content:center;font-size:.8rem;color:var(--text);
+    border:8px solid var(--white);box-shadow:0 18px 40px rgba(185,124,120,.25);overflow:hidden;text-align:center
+  }
+  .about-img img{width:100%;height:100%;object-fit:cover}
+  .about p{margin-bottom:14px}
+
+  /* Preis */
+  .price-sec{
+    background:
+      radial-gradient(circle at 10% 15%, var(--rose) 0, transparent 35%),
+      radial-gradient(circle at 95% 85%, var(--blush) 0, transparent 40%),
+      var(--cream-2);
+  }
+  .price-box{
+    background:var(--white);border-radius:30px;padding:40px 26px;max-width:520px;margin:0 auto;
+    text-align:center;box-shadow:0 26px 60px rgba(185,124,120,.22);border:1px solid var(--rose)
+  }
+  .price-old{text-decoration:line-through;color:var(--text-soft);font-size:1.15rem;margin-right:8px}
+  .price-new{font-family:'Cormorant Garamond',serif;font-size:4rem;font-weight:600;line-height:1;color:var(--text)}
+  .price-label{font-size:.85rem;color:var(--rose-deep);font-weight:500;margin:8px 0 24px}
+  .incl{list-style:none;text-align:left;display:grid;gap:10px;margin:0 auto 30px;max-width:360px}
+  .incl li{padding-left:28px;position:relative;font-size:.95rem}
+  .incl li::before{
+    content:"✓";position:absolute;left:0;top:1px;width:19px;height:19px;border-radius:50%;
+    background:var(--rose);font-size:.7rem;display:flex;align-items:center;justify-content:center;font-weight:600
+  }
+
+  /* FAQ */
+  .faq{margin-top:30px}
+  details{background:var(--white);border-radius:16px;padding:18px 22px;margin-bottom:12px;border:1px solid var(--blush)}
+  summary{cursor:pointer;font-weight:500;list-style:none;position:relative;padding-right:30px}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";position:absolute;right:0;top:-2px;font-size:1.4rem;color:var(--rose-deep)}
+  details[open] summary::after{content:"–"}
+  details p{margin-top:12px;color:var(--text-soft);font-size:.95rem}
+
+  /* Schluss */
+  .final{text-align:center;background:var(--blush)}
+  .final p{max-width:560px;margin:0 auto 28px;color:var(--text-soft)}
+
+  .cmp-wrap{max-width:520px;margin:0 auto 36px;background:var(--white);border-radius:24px;padding:10px 20px 14px;border:1px solid var(--rose)}
+  .cmp-wrap .cmp-table{margin:8px 0}
+  .note-box{margin-top:22px;background:var(--blush);border-left:3px solid var(--rose-deep);border-radius:0 14px 14px 0;padding:16px 18px;font-size:.92rem}
+  .note-box strong{font-weight:600}
+  .price-box.pdf-box{margin-top:28px}
+  .pdf-intro{font-size:.92rem;color:var(--text-soft);margin:-8px 0 22px}
+  .cmp-table{width:100%;border-collapse:collapse;margin:22px 0 6px;font-size:.88rem;text-align:center}
+  .cmp-table th{font-weight:500;padding:10px 6px;font-size:.85rem}
+  .cmp-table td{padding:10px 6px;border-top:1px solid var(--blush)}
+  .cmp-table td:first-child{text-align:left;padding-left:0}
+  .cmp-table .hl{background:var(--blush)}
+  .cmp-table thead .hl{border-radius:12px 12px 0 0}
+  .cmp-table tr:last-child .hl{border-radius:0 0 12px 12px}
+  .cmp-table .yes{color:var(--rose-deep);font-weight:600;font-size:1rem}
+  .cmp-table .no{color:#c9bcb3;font-size:.9rem}
+  .cmp-table .price-row td{font-weight:500;vertical-align:bottom;padding-bottom:14px}
+  .cmp-old{color:var(--text-soft);font-weight:300;font-size:.8rem;display:block}
+  .aff-only{display:inline-block;margin-top:12px;font-size:.75rem;font-weight:500;color:var(--rose-deep);background:var(--blush);padding:4px 12px;border-radius:999px}
+  .pdf-hint{font-size:.78rem;color:var(--text-soft);margin-top:18px;padding-top:14px;border-top:1px solid var(--blush)}
+  .cmp-table th:nth-child(2),.cmp-table th:nth-child(3){width:22%}
+  .cmp-link{display:inline-block;margin:10px 0 22px;font-size:.88rem;font-weight:500;color:var(--rose-deep);text-decoration:none}
+  .btn-light{background:var(--white);color:var(--text);border:1.5px solid var(--text);box-shadow:none}
+  .btn-light:hover{background:var(--blush)}
+  footer{background:var(--text);color:var(--cream-2);text-align:center;padding:34px 20px;font-size:.8rem}
+  footer a{color:var(--cream-2);margin:0 10px}
+  footer p{margin-top:12px;opacity:.75}
+
+  @media (min-width:820px){
+    .hero-grid{grid-template-columns:1.2fr 1fr}
+    .two,.extras{grid-template-columns:1fr 1fr}
+    .about{grid-template-columns:260px 1fr}
+    .phone{width:280px;height:570px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ EINSTELLUNGEN ============
+     Nur hier unten im <script> am Ende der Seite ändern:
+     CHECKOUT_URL = dein Digistore24-Bestelllink
+     LAUNCH = true (27 €) / false (47 €)
+     ======================================= -->
+
+<div class="launchbar" id="launchbar">
+  <strong>Launch-Preis:</strong> 27 € statt 47 €, nur bis <span class="launch-date">DATUM</span>. Danach gilt der reguläre Preis.
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Mobile Avatar Atelier</span>
+      <h1>Kein Laptop, kein Gesicht, kein Technikstress.<br><em class="script">Dein KI-Avatar entsteht am Handy.</em></h1>
+      <p class="lead">Erstelle Bilder und kurze B-Roll-Clips von wenigen Sekunden für deine Reels, mit deinem persönlichen KI-Avatar. Schritt für Schritt erklärt, zum direkten Mitmachen.</p>
+      <a class="btn checkout" href="#">Jetzt einsteigen</a>
+      <span class="btn-note price-note">Launch-Preis 27 € statt 47 € bis <span class="launch-date">DATUM</span> · Sofortiger Zugang</span>
+      <div class="chips">
+        <span class="chip">📱 100 % am Handy</span>
+        <span class="chip">🎬 Videos zum Mitmachen</span>
+        <span class="chip">✨ Nur ausgewählte Tools</span>
+        <span class="chip">📄 Prompt-Vorlagen</span>
+        <span class="chip">💬 Telegram-Support</span>
+      </div>
+    </div>
+    <div>
+      <div class="phone">
+        <div class="screen">
+          <video class="reel" muted playsinline preload="auto"></video>
+          <video class="reel" muted playsinline preload="auto"></video>
+          <span class="screen-placeholder">Platz für deine<br>Beispielvideos</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- KENNST DU DAS -->
+<section class="soft">
+  <div class="wrap narrow">
+    <span class="eyebrow">Kennst du das?</span>
+    <h2>Du willst sichtbar sein. Aber nicht mit deinem Gesicht.</h2>
+    <ul class="pain-list">
+      <li>Viele KI-Kurse sind riesig und teuer und bringen dir Dinge bei, die du nie brauchst. Du möchtest aber nur kurze Clips für deine Reels, in denen dein Avatar immer gleich aussieht.</li>
+      <li>Du möchtest Content erstellen, aber dein Gesicht und deine Privatsphäre sollen bei dir bleiben.</li>
+      <li>Deine Zeit ist knapp. Zwischen Kindern, Job und Haushalt bleiben nur kurze Lücken am Tag, und einen Laptop hast du dann selten griffbereit.</li>
+      <li>Die meisten KI-Tutorials sind auf Englisch, laufen am Computer und sind voller Fachwörter.</li>
+      <li>Es gibt unzählige KI-Tools, und jedes Video empfiehlt dir ein anderes. Am Ende weißt du gar nicht mehr, womit du überhaupt anfangen sollst.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- KLEIN & FOKUSSIERT -->
+<section>
+  <div class="wrap narrow center">
+    <span class="eyebrow">Bewusst klein gehalten</span>
+    <h2>Kein riesiger KI-Kurs. <em class="script">Sondern genau das, was du brauchst.</em></h2>
+    <p>Im Mobile Avatar Atelier geht es um genau eine Sache: kurze B-Roll-Clips mit deinem Avatar, der in jedem Video gleich aussieht. Du bekommst keine endlose Liste mit Tools, aus denen du dir selbst etwas zusammensuchen musst. Ich habe die Tools für dich ausgewählt und zeige dir nur diese, Schritt für Schritt. So kommst du ohne großen Aufwand und ohne Verwirrung zu deinem ersten Avatar.</p>
+  </div>
+</section>
+
+<!-- GEDANKE -->
+<section>
+  <div class="wrap narrow">
+    <div class="quote">
+      <p class="big">„Perfekt sieht schön aus. Aber es wirkt nicht authentisch.“</p>
+      <p>Früher war glatte Perfektion das Ideal auf Instagram. Heute, wo KI-Bilder überall sind, ist es genau umgekehrt: Kleine, bewusste Unperfektheiten machen deinen Avatar echt und bauen Vertrauen auf. Im Mobile Avatar Atelier lernst du, wie du einen Avatar erschaffst, der nach Alltag aussieht und nicht nach Werbeplakat.</p>
+    </div>
+  </div>
+</section>
+
+<!-- INHALTE -->
+<section class="soft" id="inhalt">
+  <div class="wrap narrow">
+    <span class="eyebrow">Das erwartet dich</span>
+    <h2>Vom ersten Prompt bis zu deinem ersten Avatar-Video</h2>
+    <p>Jedes Video ist eine Bildschirmaufnahme direkt vom Handy. Du siehst jeden Klick und kannst parallel mitmachen.</p>
+    <div class="note-box">
+      <strong>Wichtig zu wissen:</strong> Im Atelier lernst du, kurze Clips von wenigen Sekunden zu erstellen, die du als B-Roll für deine Reels nutzt. Dein Avatar bewegt sich darin natürlich, zum Beispiel beim Autofahren, Kaffeetrinken, Lächeln oder Spazierengehen. Deinen Text oder deine Stimme legst du selbst darüber. Sprechende Avatare oder lange KI-Filme sind nicht Teil des Kurses.
+    </div>
+
+    <div class="modules">
+      <div class="module small">
+        <div class="num">♡</div>
+        <div><h3>Willkommen im Atelier</h3><p>Was dich erwartet, welche Apps du brauchst und warum ein authentischer Avatar mehr Vertrauen schafft als ein perfekter.</p></div>
+      </div>
+      <div class="module">
+        <div class="num">1</div>
+        <div><h3>Dein Avatar entsteht</h3><p>Mit einem Ausfüll-Prompt aus dem Kurs erstellst du deinen persönlichen Avatar. Am Ende hast du dein Referenzbild, die Grundlage für alles Weitere.</p></div>
+      </div>
+      <div class="module">
+        <div class="num">2</div>
+        <div><h3>Neue Posen und Szenen</h3><p>Du nimmst ein Foto, das dir gefällt, ob von Instagram, Pinterest oder von irgendwo sonst, und lässt deinen Avatar in genau dieser Pose und Umgebung entstehen. Immer wieder erkennbar, immer wieder neu.</p></div>
+      </div>
+      <div class="module">
+        <div class="num">3</div>
+        <div><h3>Dein Avatar bewegt sich</h3><p>Du machst aus deinem Bild ein kurzes Video. Natürlich, ruhig, im echten Handy-Look und ohne künstliche Kamerafahrten.</p></div>
+      </div>
+      <div class="module">
+        <div class="num">4</div>
+        <div><h3>Dein Avatar-Video für dein Reel</h3><p>Du bringst alles zusammen und hast am Ende ein fertiges Avatar-Video, das du direkt als B-Roll für dein Reel verwenden kannst, also als Videobild, über das du deinen Text oder deine Stimme legst.</p></div>
+      </div>
+      <div class="module small">
+        <div class="num">♡</div>
+        <div><h3>Dein nächster Schritt</h3><p>Wie du jetzt dranbleibst, regelmäßig neue Inhalte erstellst und wo du Hilfe bekommst, wenn du hängst.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FÜR WEN -->
+<section>
+  <div class="wrap">
+    <div class="center narrow">
+      <span class="eyebrow">Passt das zu dir?</span>
+      <h2>Für wen das Atelier gemacht ist</h2>
+    </div>
+    <div class="two">
+      <div class="card yes">
+        <h3>Das Atelier ist für dich, wenn …</h3>
+        <ul>
+          <li>du sichtbar werden willst, ohne dein Gesicht zu zeigen</li>
+          <li>du nicht ständig Videos aus deinem Alltag filmen möchtest</li>
+          <li>du nur dein Handy und kurze Zeitfenster am Tag hast</li>
+          <li>du KI-Anfängerin bist und es ruhig und verständlich erklärt haben möchtest</li>
+          <li>du keinen riesigen Kurs willst, sondern einen klaren Weg mit wenigen, ausgewählten Tools</li>
+          <li>du Content für dein Online-Business, deine Seite oder deine Idee brauchst</li>
+          <li>dein Avatar natürlich wirken soll, auch mit Hijab, ganz wie du es möchtest</li>
+        </ul>
+      </div>
+      <div class="card no">
+        <h3>Eher nicht für dich, wenn …</h3>
+        <ul>
+          <li>du lange KI-Videos oder einen sprechenden Avatar erwartest</li>
+          <li>du komplexe Profi-Workflows am Computer suchst</li>
+          <li>du einen großen Kurs willst, der dir möglichst viele verschiedene KI-Tools vorstellt</li>
+          <li>du nach schnellen Einkommensversprechen suchst</li>
+          <li>du nicht bereit bist, selbst mitzumachen und auszuprobieren</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXTRAS -->
+<section class="soft">
+  <div class="wrap">
+    <div class="center narrow">
+      <span class="eyebrow">Inklusive</span>
+      <h2>Damit du nicht allein dastehst</h2>
+    </div>
+    <div class="extras">
+      <div class="extra">
+        <span class="tag">Extra 1</span>
+        <h3>PDF mit Prompt-Vorlagen</h3>
+        <p>Alle Prompts aus dem Kurs zum Kopieren und Ausfüllen. Du musst nichts abtippen und nichts auswendig wissen.</p>
+      </div>
+      <div class="extra">
+        <span class="tag">Extra 2</span>
+        <h3>Telegram-Gruppe mit mir</h3>
+        <p>Du hängst an einer Stelle fest? In der Gruppe stellst du deine Frage und ich helfe dir persönlich weiter. Du bist nicht allein mit dem Kurs.</p>
+      </div>
+      <div class="extra gift">
+        <span class="tag">🎁 Geschenk</span>
+        <h3>Der Avatar-Fahrplan: So entsteht dein KI-Avatar</h3>
+        <p>Alle Schritte mit Screenshots und allen Prompts zum Kopieren, <span class="value">im Wert von 17 €</span>. Als Kurs-Käuferin darfst du den Fahrplan außerdem weiterempfehlen und bekommst <strong>60 % Provision</strong> auf jeden Verkauf über deinen Link, statt der regulären 40 %.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AFFILIATE -->
+<section>
+  <div class="wrap">
+    <div class="center narrow">
+      <span class="eyebrow">Weiterempfehlen</span>
+      <h2>Empfiehl das Atelier weiter <em class="script">und verdiene mit.</em></h2>
+      <p>Dir gefällt der Kurs? Dann kannst du ihn als Partnerin über Digistore24 weiterempfehlen. Für jeden Verkauf über deinen persönlichen Link erhältst du eine Provision.</p>
+    </div>
+    <div class="aff">
+      <div class="aff-card">
+        <div class="aff-pct">50 %</div>
+        <h3>auf den Kurs</h3>
+        <p>Für jeden Verkauf des Mobile Avatar Ateliers über deinen Link.</p>
+        <p class="aff-only">50 % als Kurs-Käuferin · sonst 40 %</p>
+      </div>
+      <div class="aff-card">
+        <div class="aff-pct">60 %</div>
+        <h3>auf den Avatar-Fahrplan</h3>
+        <p>Für jeden Verkauf des Avatar-Fahrplans über deinen Link.</p>
+        <p class="aff-only">60 % als Kurs-Käuferin · sonst 40 %</p>
+      </div>
+    </div>
+    <p class="small-note">Wie viel du verdienst, hängt allein davon ab, wie viele Verkäufe über deinen Link entstehen.</p>
+  </div>
+</section>
+
+<!-- ÜBER MICH -->
+<section>
+  <div class="wrap about">
+    <div class="about-img">
+      <!-- Hier ein Bild deines Avatars einfügen: <img src="elif-avatar.jpg" alt="Elif"> -->
+      Platz für dein<br>Avatar-Bild
+    </div>
+    <div>
+      <span class="eyebrow">Wer dich begleitet</span>
+      <h2>Hallo, ich bin Elif</h2>
+      <p>Ich bin Ingenieurin, Mama von zwei Kindern und erstelle meinen gesamten Content mit KI, ohne mein Gesicht zu zeigen. Und zwar fast immer am Handy, in den kleinen Lücken zwischen Familie, Teilzeitjob und Haushalt.</p>
+      <p>Genau so habe ich das Mobile Avatar Atelier aufgebaut: ruhig erklärt, ohne Fachchinesisch und so, dass du wirklich jeden Schritt mitmachen kannst.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PREIS -->
+<section class="price-sec" id="preis">
+  <div class="wrap">
+    <div class="center narrow">
+      <span class="eyebrow">Dein Einstieg</span>
+      <h2>Welches Angebot passt zu dir?</h2>
+    </div>
+    <div class="cmp-wrap">
+        <table class="cmp-table">
+        <thead>
+          <tr><th></th><th>Fahrplan</th><th class="hl">Kurs</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Alle Schritte zum Nachlesen</td><td class="yes">✓</td><td class="yes hl">✓</td></tr>
+          <tr><td>Prompts zum Kopieren</td><td class="yes">✓</td><td class="yes hl">✓</td></tr>
+          <tr><td>Videos, in denen du jeden Klick siehst</td><td class="no">✕</td><td class="yes hl">✓</td></tr>
+          <tr><td>Telegram-Gruppe mit persönlicher Hilfe</td><td class="no">✕</td><td class="yes hl">✓</td></tr>
+          <tr><td>Provision auf den Kurs</td><td>40 %</td><td class="hl"><strong>50 %</strong></td></tr>
+          <tr><td>Provision auf den Fahrplan</td><td>40 %</td><td class="hl"><strong>60 %</strong></td></tr>
+          <tr class="price-row"><td>Preis</td><td>17 €</td><td class="hl"><s class="cmp-old">47 €</s> <span class="cmp-price">27 €</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="price-box">
+      <span class="eyebrow">Mobile Avatar Atelier</span>
+      <div>
+        <span class="price-old" id="priceOld">47 €</span>
+        <span class="price-new" id="priceNew">27 €</span>
+      </div>
+      <p class="price-label" id="priceLabel">Launch-Preis, nur bis <span class="launch-date">DATUM</span></p>
+      <ul class="incl">
+        <li>Willkommensvideo + 4 Hauptvideos + Abschlussvideo</li>
+        <li>Komplett am Handy, ohne Laptop</li>
+        <li>Nur ausgewählte Tools, kein Tool-Chaos</li>
+        <li>PDF mit allen Prompt-Vorlagen</li>
+        <li>Telegram-Gruppe mit persönlichem Support</li>
+        <li>🎁 Geschenk: Der Avatar-Fahrplan als PDF (Wert 17 €)</li>
+        <li>Weiterempfehlen: 50 % Provision auf den Kurs, 60 % auf den Fahrplan</li>
+        <li>Sofortiger Zugang nach dem Kauf</li>
+      </ul>
+      <a class="btn checkout" href="#">Ja, ich will meinen Avatar</a>
+      <span class="btn-note">Sichere Zahlung über Digistore24 · Einmalzahlung, kein Abo</span>
+    </div>
+
+    <div class="price-box pdf-box">
+      <span class="eyebrow">Avatar-Fahrplan</span>
+      <div>
+        <span class="price-new">17 €</span>
+      </div>
+      <p class="price-label">So entsteht dein KI-Avatar · PDF</p>
+      <p class="pdf-intro">Dein Weg von der ersten Idee bis zum fertigen Video deiner Avatarin, komplett mit dem Handy. Zum Nachlesen, in deinem Tempo.</p>
+      <ul class="incl">
+        <li>Alle Schritte mit Screenshots zum Nachlesen</li>
+        <li>Alle Prompts zum Kopieren</li>
+        <li>Sofortiger Download nach dem Kauf</li>
+      </ul>
+      <a class="btn checkout-pdf" href="#">Ja, ich will den Fahrplan</a>
+      <span class="btn-note">Sichere Zahlung über Digistore24 · Einmalzahlung, kein Abo</span>
+      <p class="pdf-hint">Weiterempfehlen: Für den Fahrplan bekommst du 40 % Provision. Mit dem Kauf des Kurses sind es 60 %.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="soft">
+  <div class="wrap narrow">
+    <div class="center">
+      <span class="eyebrow">Fragen</span>
+      <h2>Häufige Fragen</h2>
+    </div>
+    <div class="faq">
+      <details>
+        <summary>Was ist der Unterschied zwischen dem Kurs und dem Avatar-Fahrplan?</summary>
+        <p>Der Avatar-Fahrplan ist eine PDF mit allen Schritten, Screenshots und allen Prompts zum Kopieren. Damit setzt du alles selbstständig um.</p>
+        <p>Im Kurs bekommst du zusätzlich Videos, in denen du jeden Klick siehst und direkt mitmachen kannst, die Telegram-Gruppe mit persönlicher Hilfe und eine höhere Provision, wenn du den Fahrplan weiterempfiehlst (60 % statt 40 %). Den Fahrplan bekommst du im Kurs geschenkt dazu.</p>
+        <p>Wenn du gern liest und selbst ausprobierst, reicht dir der Fahrplan. Wenn du lieber zuschaust und Begleitung haben möchtest, ist der Kurs das Richtige für dich.</p>
+      </details>
+      <details>
+        <summary>Was für Videos lerne ich zu erstellen?</summary>
+        <p>Kurze Clips von wenigen Sekunden, in denen sich dein Avatar natürlich bewegt. Die nutzt du als B-Roll, also als Videobild für deine Reels, über das du deinen Text oder deine Stimme legst. Sprechende Avatare oder lange KI-Videos lernst du im Atelier nicht.</p>
+      </details>
+      <details>
+        <summary>Brauche ich Vorkenntnisse?</summary>
+        <p>Nein. Das Atelier ist für Anfängerinnen gemacht. Du siehst jeden Klick und kannst direkt mitmachen.</p>
+      </details>
+      <details>
+        <summary>Brauche ich einen Laptop?</summary>
+        <p>Nein. Alles, was du im Kurs lernst, machst du mit deinem Handy.</p>
+      </details>
+      <details>
+        <summary>Funktioniert das auch mit Android?</summary>
+        <p>Ich zeige alles am iPhone. Die Apps, die wir nutzen, gibt es auch für Android, die Bedienung kann dort aber etwas anders aussehen.</p>
+      </details>
+      <details>
+        <summary>Kommen noch Kosten für Apps dazu?</summary>
+        <p>Für die Bilder brauchst du am Anfang nichts zu bezahlen. Erst wenn du sehr viele Bilder erstellst, kann ein kleines Abo sinnvoll werden.</p>
+        <p>Für die Videos brauchst du ein kleines Paket, denn das Video-Tool hat keine kostenlose Version. Ich habe aber bewusst Tools ausgewählt, die preislich überschaubar sind: Für den Start reichen schon 6 € für 7 Videos. Je nachdem, wie viel du erstellst, kannst du das Paket später erweitern. Ich selbst nutze nur das Paket für 10 € im Monat. Damit erstelle ich mindestens 15 Videos à 7 Sekunden, und das reicht mir völlig aus.</p>
+        <p style="font-size:.8rem">Preise der Anbieter, Stand November 2026. Sie können sich ändern.</p>
+      </details>
+      <details>
+        <summary>Muss ich mein Gesicht für den Avatar hochladen?</summary>
+        <p>Nein. Dein Avatar entsteht aus einer Beschreibung. Du entscheidest selbst, wie er aussieht.</p>
+      </details>
+      <details>
+        <summary>Wie lange habe ich Zugang?</summary>
+        <p>Du hast dauerhaft Zugang zu allen Videos und kannst sie so oft ansehen, wie du möchtest.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- SCHLUSS -->
+<section class="final">
+  <div class="wrap">
+    <span class="eyebrow">Dein Atelier wartet</span>
+    <h2>Dein Avatar. Dein Tempo. <em class="script">Dein Handy.</em></h2>
+    <p>Du brauchst keinen Laptop und keine Stunden am Stück. Nur ein paar ruhige Minuten und den Mut, es auszuprobieren.</p>
+    <a class="btn checkout" href="#">Jetzt einsteigen</a>
+    <span class="btn-note price-note">Launch-Preis 27 € statt 47 € bis <span class="launch-date">DATUM</span> · Sofortiger Zugang</span>
+  </div>
+</section>
+
+<footer>
+  <a href="https://azeeza.de/impressum.html">Impressum</a>
+  <a href="https://azeeza.de/datenschutz.html">Datenschutz</a>
+  <p>© 2026 azeeza media · Die Ergebnisse hängen von deiner eigenen Umsetzung ab.</p>
+</footer>
+
+<script>
+  // ===== HIER ANPASSEN =====
+  const CHECKOUT_URL = "https://www.digistore24.com/product/DEINE-PRODUKT-ID"; // dein Digistore24-Bestelllink
+  const PDF_CHECKOUT_URL = "https://www.digistore24.com/product/PDF-PRODUKT-ID"; // Bestelllink der PDF (17 €)
+  const LAUNCH = true;              // true = Launch-Preis 27 €, false = regulär 47 €
+  const LAUNCH_ENDE = "JJJJ-MM-TT"; // letzter Tag des Launch-Preises, z. B. "2026-12-07"
+                                    // Ab dem Tag danach zeigt die Seite automatisch 47 €.
+                                    // (Den Preis bei Digistore24 musst du selbst umstellen!)
+
+  // Beispielvideos im Handy oben: laufen nacheinander in Dauerschleife.
+  // Dateinamen eintragen und die Videos in denselben Ordner wie diese Seite hochladen.
+  const BEISPIELVIDEOS = [
+    // "beispiel-1.mp4",
+    // "beispiel-2.mp4",
+    // "beispiel-3.mp4",
+  ];
+  // =========================
+
+  // Launch-Datum
+  const m = LAUNCH_ENDE.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  let launchActive = LAUNCH;
+  if (m) {
+    const deDate = `${m[3]}.${m[2]}.${m[1]}`;
+    document.querySelectorAll('.launch-date').forEach(el => el.textContent = deDate);
+    const endOfDay = new Date(+m[1], +m[2] - 1, +m[3], 23, 59, 59);
+    if (new Date() > endOfDay) launchActive = false;
+  }
+
+  // Beispielvideos in Dauerschleife
+  (function(){
+    if (!BEISPIELVIDEOS.length) return;
+    const screen = document.querySelector('.screen');
+    const players = screen.querySelectorAll('video.reel');
+    screen.classList.add('has-videos');
+    let idx = 0, cur = 0;
+    function start(player, src){
+      player.src = src; player.load();
+      const p = player.play(); if (p) p.catch(()=>{});
+    }
+    players.forEach(v => v.addEventListener('ended', () => {
+      if (v !== players[cur]) return;
+      idx = (idx + 1) % BEISPIELVIDEOS.length;
+      if (BEISPIELVIDEOS.length === 1) { v.currentTime = 0; v.play(); return; }
+      const next = players[1 - cur];
+      start(next, BEISPIELVIDEOS[idx]);
+      next.classList.add('show'); v.classList.remove('show');
+      cur = 1 - cur;
+    }));
+    start(players[0], BEISPIELVIDEOS[0]);
+    players[0].classList.add('show');
+  })();
+
+  document.querySelectorAll('.checkout').forEach(a => a.href = CHECKOUT_URL);
+  document.querySelectorAll('.checkout-pdf').forEach(a => a.href = PDF_CHECKOUT_URL);
+
+  if (!launchActive) {
+    document.getElementById('launchbar').style.display = 'none';
+    document.getElementById('priceOld').style.display = 'none';
+    document.getElementById('priceNew').textContent = '47 €';
+    document.getElementById('priceLabel').textContent = 'Einmalzahlung';
+    document.querySelectorAll('.cmp-price').forEach(n => n.textContent = '47 €');
+    document.querySelectorAll('.cmp-old').forEach(n => n.style.display = 'none');
+    document.querySelectorAll('.price-note').forEach(n => n.textContent = '47 € · Sofortiger Zugang');
+  }
+</script>
+</body>
+</html>

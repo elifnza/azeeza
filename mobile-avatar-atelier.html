@@ -87,6 +87,10 @@
     padding:6px 14px;font-size:.8rem;color:var(--text-soft)
   }
 
+  .hero-logo{width:100%;max-width:440px;border-radius:20px;margin-bottom:26px;box-shadow:0 14px 34px rgba(185,124,120,.22)}
+  .cover-img{width:100%;max-width:260px;margin:0 auto 18px;border-radius:12px}
+  .box-logo{width:100%;max-width:340px;margin:0 auto 18px;border-radius:16px}
+
   /* Handy-Mockup */
   .phone{
     width:250px;height:510px;margin:0 auto;border-radius:38px;background:var(--text);
@@ -159,7 +163,8 @@
     background:var(--rose-deep);color:var(--white);padding:4px 10px;border-radius:999px;margin-bottom:12px
   }
 
-  .extra.gift{grid-column:1/-1;background:linear-gradient(150deg,var(--blush),var(--rose));border:1px dashed var(--rose-deep)}
+  .extra.full{grid-column:1/-1}
+  .extra.gift{background:linear-gradient(150deg,var(--blush),var(--rose));border:1px dashed var(--rose-deep)}
   .extra.gift .tag{background:var(--text)}
   .value{font-weight:500;color:var(--rose-deep)}
 
@@ -169,7 +174,7 @@
   .aff-pct{font-family:'Cormorant Garamond',serif;font-size:3.4rem;font-weight:600;line-height:1;color:var(--rose-deep);margin-bottom:8px}
   .aff-card p{color:var(--text-soft);font-size:.95rem}
   .small-note{font-size:.78rem;color:var(--text-soft);margin-top:22px;text-align:center}
-  @media (min-width:820px){.aff{grid-template-columns:1fr 1fr}}
+  @media (min-width:820px){.aff{grid-template-columns:1fr 1fr 1fr}}
 
   /* Über mich */
   .about{display:grid;gap:30px;align-items:center}
@@ -267,7 +272,7 @@
 <header class="hero">
   <div class="wrap hero-grid">
     <div>
-      <span class="eyebrow">Mobile Avatar Atelier</span>
+      <img class="hero-logo" src="atelier-logo.jpg" alt="Mobile Avatar Atelier">
       <h1>Kein Laptop, kein Gesicht, kein Technikstress.<br><em class="script">Dein KI-Avatar entsteht am Handy.</em></h1>
       <p class="lead">Erstelle Bilder und kurze B-Roll-Clips von wenigen Sekunden für deine Reels, mit deinem persönlichen KI-Avatar. Schritt für Schritt erklärt, zum direkten Mitmachen.</p>
       <a class="btn checkout" href="#">Jetzt einsteigen</a>
@@ -331,7 +336,7 @@
   <div class="wrap narrow">
     <span class="eyebrow">Das erwartet dich</span>
     <h2>Vom ersten Prompt bis zu deinem ersten Avatar-Video</h2>
-    <p>Jedes Video ist eine Bildschirmaufnahme direkt vom Handy. Du siehst jeden Klick und kannst parallel mitmachen.</p>
+    <p>Jedes Video ist eine Bildschirmaufnahme direkt vom Handy. Du siehst jeden Klick und kannst parallel mitmachen. Alle Prompts aus dem Kurs bekommst du als PDF zum Kopieren und Ausfüllen dazu.</p>
     <div class="note-box">
       <strong>Wichtig zu wissen:</strong> Im Atelier lernst du, kurze Clips von wenigen Sekunden zu erstellen, die du als B-Roll für deine Reels nutzt. Dein Avatar bewegt sich darin natürlich, zum Beispiel beim Autofahren, Kaffeetrinken, Lächeln oder Spazierengehen. Deinen Text oder deine Stimme legst du selbst darüber. Sprechende Avatare oder lange KI-Filme sind nicht Teil des Kurses.
     </div>
@@ -407,20 +412,20 @@
       <h2>Damit du nicht allein dastehst</h2>
     </div>
     <div class="extras">
-      <div class="extra">
-        <span class="tag">Extra 1</span>
-        <h3>PDF mit Prompt-Vorlagen</h3>
-        <p>Alle Prompts aus dem Kurs zum Kopieren und Ausfüllen. Du musst nichts abtippen und nichts auswendig wissen.</p>
-      </div>
-      <div class="extra">
-        <span class="tag">Extra 2</span>
+      <div class="extra full">
+        <span class="tag">Extra</span>
         <h3>Telegram-Gruppe mit mir</h3>
         <p>Du hängst an einer Stelle fest? In der Gruppe stellst du deine Frage und ich helfe dir persönlich weiter. Du bist nicht allein mit dem Kurs.</p>
       </div>
       <div class="extra gift">
         <span class="tag">🎁 Geschenk</span>
         <h3>Der Avatar-Fahrplan: So entsteht dein KI-Avatar</h3>
-        <p>Alle Schritte mit Screenshots und allen Prompts zum Kopieren, <span class="value">im Wert von 17 €</span>. Als Kurs-Käuferin darfst du den Fahrplan außerdem weiterempfehlen und bekommst <strong>60 % Provision</strong> auf jeden Verkauf über deinen Link, statt der regulären 40 %.</p>
+        <p>Alle Schritte mit Screenshots, allen Prompts zum Kopieren und einem Spickzettel zum Abhaken, <span class="value">im Wert von 17 €</span>. Als Kurs-Käuferin darfst du den Fahrplan außerdem weiterempfehlen und bekommst <strong>60 % Provision</strong> auf jeden Verkauf über deinen Link, statt der regulären 40 %.</p>
+      </div>
+      <div class="extra gift">
+        <span class="tag">🎁 Geschenk</span>
+        <h3>22 Alltagsszenen für deinen Avatar</h3>
+        <p>22 fertige Video-Prompts zum Kopieren, jeweils mit Beispielbild und einer kurzen Beschreibung, was im Video passiert. So hast du sofort Ideen für deine nächsten Reels, <span class="value">im Wert von 12 €</span>.</p>
       </div>
     </div>
   </div>
@@ -446,6 +451,12 @@
         <h3>auf den Avatar-Fahrplan</h3>
         <p>Für jeden Verkauf des Avatar-Fahrplans über deinen Link.</p>
         <p class="aff-only">60 % als Kurs-Käuferin · sonst 40 %</p>
+      </div>
+      <div class="aff-card">
+        <div class="aff-pct">40 %</div>
+        <h3>auf die 22 Alltagsszenen</h3>
+        <p>Für jeden Verkauf der Prompt-PDF über deinen Link.</p>
+        <p class="aff-only">40 % für alle</p>
       </div>
     </div>
     <p class="small-note">Wie viel du verdienst, hängt allein davon ab, wie viele Verkäufe über deinen Link entstehen.</p>
@@ -483,15 +494,17 @@
           <tr><td>Alle Schritte zum Nachlesen</td><td class="yes">✓</td><td class="yes hl">✓</td></tr>
           <tr><td>Prompts zum Kopieren</td><td class="yes">✓</td><td class="yes hl">✓</td></tr>
           <tr><td>Videos, in denen du jeden Klick siehst</td><td class="no">✕</td><td class="yes hl">✓</td></tr>
+          <tr><td>22 Alltagsszenen (Prompt-PDF)</td><td class="no">✕</td><td class="yes hl">✓</td></tr>
           <tr><td>Telegram-Gruppe mit persönlicher Hilfe</td><td class="no">✕</td><td class="yes hl">✓</td></tr>
           <tr><td>Provision auf den Kurs</td><td>40 %</td><td class="hl"><strong>50 %</strong></td></tr>
           <tr><td>Provision auf den Fahrplan</td><td>40 %</td><td class="hl"><strong>60 %</strong></td></tr>
+          <tr><td>Provision auf die 22 Alltagsszenen</td><td>40 %</td><td class="hl">40 %</td></tr>
           <tr class="price-row"><td>Preis</td><td>17 €</td><td class="hl"><s class="cmp-old">47 €</s> <span class="cmp-price">27 €</span></td></tr>
         </tbody>
       </table>
     </div>
     <div class="price-box">
-      <span class="eyebrow">Mobile Avatar Atelier</span>
+      <img class="box-logo" src="atelier-logo.jpg" alt="Mobile Avatar Atelier">
       <div>
         <span class="price-old" id="priceOld">47 €</span>
         <span class="price-new" id="priceNew">27 €</span>
@@ -501,9 +514,10 @@
         <li>Willkommensvideo + 4 Hauptvideos + Abschlussvideo</li>
         <li>Komplett am Handy, ohne Laptop</li>
         <li>Nur ausgewählte Tools, kein Tool-Chaos</li>
-        <li>PDF mit allen Prompt-Vorlagen</li>
+        <li>Alle Prompts zum Kopieren als PDF</li>
         <li>Telegram-Gruppe mit persönlichem Support</li>
         <li>🎁 Geschenk: Der Avatar-Fahrplan als PDF (Wert 17 €)</li>
+        <li>🎁 Geschenk: 22 Alltagsszenen als PDF (Wert 12 €)</li>
         <li>Weiterempfehlen: 50 % Provision auf den Kurs, 60 % auf den Fahrplan</li>
         <li>Sofortiger Zugang nach dem Kauf</li>
       </ul>
@@ -512,7 +526,7 @@
     </div>
 
     <div class="price-box pdf-box">
-      <span class="eyebrow">Avatar-Fahrplan</span>
+      <img class="cover-img" src="fahrplan-cover.jpg" alt="Der Avatar-Fahrplan">
       <div>
         <span class="price-new">17 €</span>
       </div>
@@ -521,11 +535,31 @@
       <ul class="incl">
         <li>Alle Schritte mit Screenshots zum Nachlesen</li>
         <li>Alle Prompts zum Kopieren</li>
+        <li>Tipps, was du tust, wenn etwas nicht klappt</li>
+        <li>Spickzettel zum Abhaken</li>
         <li>Sofortiger Download nach dem Kauf</li>
       </ul>
       <a class="btn checkout-pdf" href="#">Ja, ich will den Fahrplan</a>
       <span class="btn-note">Sichere Zahlung über Digistore24 · Einmalzahlung, kein Abo</span>
       <p class="pdf-hint">Weiterempfehlen: Für den Fahrplan bekommst du 40 % Provision. Mit dem Kauf des Kurses sind es 60 %.</p>
+    </div>
+
+    <div class="price-box pdf-box">
+      <img class="cover-img" src="alltagsszenen-cover.jpg" alt="22 Alltagsszenen für deinen Avatar">
+      <div>
+        <span class="price-new">12 €</span>
+      </div>
+      <p class="price-label">Video-Prompts für deinen Avatar · PDF</p>
+      <p class="pdf-intro">Fertige Ideen für kurze Alltagsclips. Einfach kopieren, einfügen und deinen Avatar in Bewegung bringen.</p>
+      <ul class="incl">
+        <li>22 Video-Prompts zum Kopieren</li>
+        <li>Zu jedem Prompt ein Beispielbild</li>
+        <li>Kurz erklärt, was im Video passiert</li>
+        <li>Sofortiger Download nach dem Kauf</li>
+      </ul>
+      <a class="btn checkout-prompts" href="#">Ja, ich will die 22 Szenen</a>
+      <span class="btn-note">Sichere Zahlung über Digistore24 · Einmalzahlung, kein Abo</span>
+      <p class="pdf-hint">Gut zu wissen: Für die Prompts brauchst du schon einen eigenen Avatar. Wie du ihn erstellst, lernst du im Kurs oder im Avatar-Fahrplan. Im Kurs bekommst du die 22 Alltagsszenen geschenkt. Weiterempfehlen: 40 % Provision für alle.</p>
     </div>
   </div>
 </section>
@@ -541,8 +575,12 @@
       <details>
         <summary>Was ist der Unterschied zwischen dem Kurs und dem Avatar-Fahrplan?</summary>
         <p>Der Avatar-Fahrplan ist eine PDF mit allen Schritten, Screenshots und allen Prompts zum Kopieren. Damit setzt du alles selbstständig um.</p>
-        <p>Im Kurs bekommst du zusätzlich Videos, in denen du jeden Klick siehst und direkt mitmachen kannst, die Telegram-Gruppe mit persönlicher Hilfe und eine höhere Provision, wenn du den Fahrplan weiterempfiehlst (60 % statt 40 %). Den Fahrplan bekommst du im Kurs geschenkt dazu.</p>
+        <p>Im Kurs bekommst du zusätzlich Videos, in denen du jeden Klick siehst und direkt mitmachen kannst, die Telegram-Gruppe mit persönlicher Hilfe und eine höhere Provision, wenn du den Fahrplan weiterempfiehlst (60 % statt 40 %). Den Fahrplan und die 22 Alltagsszenen bekommst du im Kurs geschenkt dazu.</p>
         <p>Wenn du gern liest und selbst ausprobierst, reicht dir der Fahrplan. Wenn du lieber zuschaust und Begleitung haben möchtest, ist der Kurs das Richtige für dich.</p>
+      </details>
+      <details>
+        <summary>Was sind die 22 Alltagsszenen?</summary>
+        <p>Eine PDF mit 22 fertigen Video-Prompts für kurze Alltagsclips mit deinem Avatar. Zu jedem Prompt siehst du ein Beispielbild und liest kurz, was im Video passiert. Du brauchst dafür schon einen eigenen Avatar. Im Kurs bekommst du die PDF geschenkt, einzeln kostet sie 12 €.</p>
       </details>
       <details>
         <summary>Was für Videos lerne ich zu erstellen?</summary>
@@ -599,6 +637,7 @@
   // ===== HIER ANPASSEN =====
   const CHECKOUT_URL = "https://www.digistore24.com/product/DEINE-PRODUKT-ID"; // dein Digistore24-Bestelllink
   const PDF_CHECKOUT_URL = "https://www.digistore24.com/product/PDF-PRODUKT-ID"; // Bestelllink der PDF (17 €)
+  const PROMPTS_CHECKOUT_URL = "https://www.digistore24.com/product/PROMPTS-PRODUKT-ID"; // Bestelllink 22 Alltagsszenen (12 €)
   const LAUNCH = true;              // true = Launch-Preis 27 €, false = regulär 47 €
   const LAUNCH_ENDE = "JJJJ-MM-TT"; // letzter Tag des Launch-Preises, z. B. "2026-12-07"
                                     // Ab dem Tag danach zeigt die Seite automatisch 47 €.
@@ -647,6 +686,7 @@
 
   document.querySelectorAll('.checkout').forEach(a => a.href = CHECKOUT_URL);
   document.querySelectorAll('.checkout-pdf').forEach(a => a.href = PDF_CHECKOUT_URL);
+  document.querySelectorAll('.checkout-prompts').forEach(a => a.href = PROMPTS_CHECKOUT_URL);
 
   if (!launchActive) {
     document.getElementById('launchbar').style.display = 'none';

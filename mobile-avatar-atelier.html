@@ -101,6 +101,8 @@
   .screen video.reel{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s ease}
   .screen video.reel.show{opacity:1}
   .screen.has-videos .screen-placeholder{display:none}
+  .sound-btn{display:none;position:absolute;bottom:16px;left:50%;transform:translateX(-50%);z-index:3;border:0;border-radius:999px;padding:8px 16px;background:rgba(255,253,251,.92);color:var(--text);font-family:'Poppins',sans-serif;font-size:.8rem;font-weight:500;cursor:pointer;box-shadow:0 4px 12px rgba(74,51,40,.2)}
+  .screen.has-videos .sound-btn{display:block}
 
   /* Kennst du das */
   .soft{background:var(--white)}
@@ -281,6 +283,7 @@
           <video class="reel" muted playsinline preload="auto"></video>
           <video class="reel" muted playsinline preload="auto"></video>
           <span class="screen-placeholder">Platz für deine<br>Beispielvideos</span>
+          <button class="sound-btn" type="button" aria-label="Ton an">🔇 Ton an</button>
         </div>
       </div>
     </div>
@@ -451,8 +454,7 @@
 <section>
   <div class="wrap about">
     <div class="about-img">
-      <!-- Hier ein Bild deines Avatars einfügen: <img src="elif-avatar.jpg" alt="Elif"> -->
-      Platz für dein<br>Avatar-Bild
+      <img src="elif.jpg" alt="Elif">
     </div>
     <div>
       <span class="eyebrow">Wer dich begleitet</span>
@@ -603,9 +605,7 @@
   // Beispielvideos im Handy oben: laufen nacheinander in Dauerschleife.
   // Dateinamen eintragen und die Videos in denselben Ordner wie diese Seite hochladen.
   const BEISPIELVIDEOS = [
-    // "beispiel-1.mp4",
-    // "beispiel-2.mp4",
-    // "beispiel-3.mp4",
+    "Verkaufsvideo_Mobile_Avatar_Atelier_v2.mp4",
   ];
   // =========================
 
@@ -641,6 +641,13 @@
     }));
     start(players[0], BEISPIELVIDEOS[0]);
     players[0].classList.add('show');
+    const btn = screen.querySelector('.sound-btn');
+    btn.addEventListener('click', () => {
+      const muted = !players[0].muted;
+      players.forEach(v => v.muted = muted);
+      if (!muted) { players[cur].currentTime = 0; players[cur].play(); }
+      btn.textContent = muted ? '🔇 Ton an' : '🔊 Ton aus';
+    });
   })();
 
   document.querySelectorAll('.checkout').forEach(a => a.href = CHECKOUT_URL);
